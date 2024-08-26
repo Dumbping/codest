@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   FaChartLine,
   FaShieldAlt,
@@ -11,6 +12,10 @@ import {
   FaBuilding,
   FaFlag,
   FaStar,
+  FaInstagram,
+  FaFacebook,
+  FaLinkedin,
+  FaTwitter
 } from "react-icons/fa";
 
 export default function Home() {
@@ -34,7 +39,7 @@ export default function Home() {
       <header className="bg-blue-600 text-white sticky top-0 z-50">
   <nav className="container mx-auto px-6 py-3">
     <div className="flex justify-between items-center">
-      <div className="text-2xl font-bold">SecureBank</div>
+      <div className="text-2xl font-bold">TirprivateBank</div>
       <div className="hidden md:flex space-x-6">
         <a href="#" className="hover:bg-blue-700 px-3 py-2 rounded transition duration-300">Home</a>
         <a href="#about" className="hover:bg-blue-700 px-3 py-2 rounded transition duration-300">About</a>
@@ -100,30 +105,30 @@ export default function Home() {
         <section id="about" className="py-20 bg-white">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl font-bold text-center mb-8">
-              About SecureBank
+              About TirprivateBank
             </h2>
             <div className="md:flex md:space-x-8">
               <div className="md:w-1/2 mb-8 md:mb-0">
-                <img
-                  src="/about-image.jpg"
-                  alt="About SecureBank"
+                <Image
+                  src="/about-img.jpg"
+                  alt="About tirprivateBank"
+                  width={500}  // Adjust this value to match your image's width
+  height={300} // Adjust this value to match your image's height
+  layout="responsive"
                   className="rounded-lg shadow-lg"
                 />
               </div>
               <div className="md:w-1/2">
-                <p className="text-gray-700 mb-4">
-                  SecureBank is a leading financial institution committed to
-                  providing innovative banking solutions for individuals and
-                  businesses. With over 50 years of experience, we combine
-                  traditional banking values with cutting-edge technology to
-                  deliver unparalleled service.
-                </p>
-                <p className="text-gray-700 mb-4">
-                  Our mission is to empower our clients to achieve their
-                  financial goals through personalized advice, state-of-the-art
-                  digital tools, and a wide range of financial products tailored
-                  to their needs.
-                </p>
+              <p className="text-gray-700 mb-4">
+  TirprivateBank is a leading financial institution committed to providing innovative banking solutions for individuals and businesses. With over 50 years of experience, we combine traditional banking values with cutting-edge technology to deliver unparalleled service.
+</p>
+<p className="text-gray-700 mb-4">
+  Our mission is to empower our clients to achieve their financial goals through personalized advice, state-of-the-art digital tools, and a wide range of financial products tailored to their needs. We pride ourselves on our customer-centric approach, ensuring that every interaction is grounded in trust, transparency, and a deep understanding of our clients' unique financial landscapes.
+</p>
+<p className="text-gray-700 mb-4">
+  Over the years, TirprivateBank has earned a reputation for excellence in service delivery, innovation, and community involvement. We have been at the forefront of introducing new financial technologies, including secure online banking, mobile payment solutions, and AI-driven financial planning tools. Our commitment to continuous improvement means that we are always exploring new ways to enhance the banking experience for our clients.
+</p>
+
                 <a
                   href="#"
                   className="text-blue-600 font-semibold hover:text-blue-800"
@@ -301,7 +306,7 @@ export default function Home() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-4">
-                      "SecureBank has transformed the way I manage my finances.
+                      "TirprivateBank has transformed the way I manage my finances.
                       Their mobile app is intuitive and their customer service
                       is top-notch!"
                     </p>
@@ -318,7 +323,7 @@ export default function Home() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-4">
-                      "I've been with SecureBank for over a decade, and their
+                      "I've been with TirprivateBank for over a decade, and their
                       investment advice has helped me secure a comfortable
                       retirement."
                     </p>
@@ -333,7 +338,7 @@ export default function Home() {
                       ))}
                     </div>
                     <p className="text-gray-700 mb-4">
-                      "As a first-time homebuyer, SecureBank guided me through
+                      "As a first-time homebuyer, these people guided me through
                       the mortgage process with ease. I couldn't be happier with
                       my experience!"
                     </p>
@@ -381,7 +386,7 @@ export default function Home() {
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="text-xl mb-8">
-              Join SecureBank today and experience banking reimagined.
+              Join TirprivateBank today and experience banking reimagined.
             </p>
             <a
               href="#"
@@ -397,7 +402,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-lg font-semibold mb-4">SecureBank</h3>
+              <h3 className="text-lg font-semibold mb-4">TirprivateBank</h3>
               <p className="text-sm text-gray-400">
                 Your trusted financial partner since 1970.
               </p>
@@ -430,7 +435,7 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <ul className="text-sm text-gray-400 space-y-2">
-                <li>123 Banking St, Finance City</li>
+                <li>Dritan Hoxha, Nd.93, H.15, 1026, Albania</li>
                 <li>Phone: (555) 123-4567</li>
                 <li>Email: info@securebank.com</li>
               </ul>
@@ -439,19 +444,16 @@ export default function Home() {
               <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-400 hover:text-white">
-                  <FaGlobe className="text-2xl" />
+                  <FaInstagram className="text-2xl" />
                 </a>
                 <a href="#" className="text-gray-400 hover:text-white">
-                  <FaUsers className />
+                  <FaFacebook className="text-2xl" />
                 </a>
                 <a href="#" className="text-gray-400 hover:text-white">
-                  <FaUsers className="text-2xl" />
+                  <FaLinkedin className="text-2xl" />
                 </a>
                 <a href="#" className="text-gray-400 hover:text-white">
-                  <FaMoneyBillWave className="text-2xl" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <FaBuilding className="text-2xl" />
+                  <FaTwitter className="text-2xl" />
                 </a>
               </div>
             </div>

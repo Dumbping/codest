@@ -8,7 +8,7 @@ export default function Logout() {
   useEffect(() => {
     // In a real app, you'd clear the session or token here.
     router.push('/login');
-  }, []);
+  }, [router]);
 
   return null;
 }

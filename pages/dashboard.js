@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { FaUser, FaCreditCard, FaMoneyBillWave, FaChartLine, FaEnvelope, FaHeadset, FaChevronDown, FaMoneyBillAlt, FaExchangeAlt, FaPiggyBank, FaTimes, FaFilter } from 'react-icons/fa';
@@ -20,7 +20,7 @@ export default function Dashboard() {
   ];
 
   const transactions = [
-    { name: 'Tir Hosp CHARGE', code: 'GS0457', date: '2020-08-25', amount: -120.50 },
+    { name: 'Tirana Hospital Bill', code: 'GS0457', date: '2020-08-25', amount: -120.50 },
     { name: 'Online Deposit', code: 'SD0875', date: '2020-08-24', amount: 3000.00 },
     { name: 'POS Pazari Vjetër', code: 'EB0129', date: '2020-08-23', amount: -85.20 },
     { name: 'Ref : INVPROF-634532', code: 'IA0678', date: '2020-08-22', amount: 6434500.75 },
@@ -31,6 +31,42 @@ export default function Dashboard() {
     { name: 'Al Gov Gov', code: 'OS0112', date: '2019-03-20', amount: -150.99 },
     { name: 'Lidl Inter', code: 'OS0783', date: '2019-02-07', amount: -25.99 },
   ];
+
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('isLoggedIn');
+    router.push('/login?message=loggedOut');
+  }, [router]);
+
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      if (!isLoggedIn) {
+        router.push('/login?message=loggedOut');
+      }
+    };
+
+    checkLoginStatus();
+
+    let logoutTimer = setTimeout(() => {
+      handleLogout();
+    }, 30 * 60 * 1000);
+
+    const resetTimer = () => {
+      clearTimeout(logoutTimer);
+      logoutTimer = setTimeout(() => {
+        handleLogout();
+      }, 30 * 60 * 1000);
+    };
+
+    window.addEventListener('mousemove', resetTimer);
+    window.addEventListener('keypress', resetTimer);
+
+    return () => {
+      clearTimeout(logoutTimer);
+      window.removeEventListener('mousemove', resetTimer);
+      window.removeEventListener('keypress', resetTimer);
+    };
+  }, [handleLogout, router]);
 
   const handleActionClick = (action) => {
     setModalContent(`You don't have access to the ${action} feature. Please contact your account manager.`);
@@ -56,44 +92,6 @@ export default function Dashboard() {
       </div>
     </div>
   );
-
-  useEffect(() => {
-    const checkLoginStatus = () => {
-      const isLoggedIn = localStorage.getItem('isLoggedIn');
-      if (!isLoggedIn) {
-        router.push('/login?message=loggedOut');
-      }
-    };
-  
-    checkLoginStatus();
-  
-    // Set up auto-logout after 30 minutes of inactivity
-    let logoutTimer = setTimeout(() => {
-      handleLogout();
-    }, 30 * 60 * 1000);
-  
-    // Reset the timer on user activity
-    const resetTimer = () => {
-      clearTimeout(logoutTimer);
-      logoutTimer = setTimeout(() => {
-        handleLogout();
-      }, 30 * 60 * 1000);
-    };
-  
-    window.addEventListener('mousemove', resetTimer);
-    window.addEventListener('keypress', resetTimer);
-  
-    return () => {
-      clearTimeout(logoutTimer);
-      window.removeEventListener('mousemove', resetTimer);
-      window.removeEventListener('keypress', resetTimer);
-    };
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    router.push('/login?message=loggedOut');
-  };
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -144,7 +142,7 @@ export default function Dashboard() {
               <ul className="space-y-2">
                 <li>
                   <button
-                    className={`w-full text-left py-2 px-4 rounded ${activeTab === 'overview' ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-100'}`}
+                    className={`w-full text-left py-2 px-4 rounded ${activeTab === 'overview' ? 'bg-yellow-100 text-yellow-700' : 'hover:bg-gray-100'}`}
                     onClick={() => setActiveTab('overview')}
                   >
                     <FaChartLine className="inline-block mr-2" /> Overview
@@ -152,7 +150,7 @@ export default function Dashboard() {
                 </li>
                 <li>
                   <button
-                    className={`w-full text-left py-2 px-4 rounded ${activeTab === 'accounts' ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-100'}`}
+                    className={`w-full text-left py-2 px-4 rounded ${activeTab === 'accounts' ? 'bg-yellow-100 text-yellow-700' : 'hover:bg-gray-100'}`}
                     onClick={() => setActiveTab('accounts')}
                   >
                     <FaUser className="inline-block mr-2" /> Accounts
@@ -160,7 +158,7 @@ export default function Dashboard() {
                 </li>
                 <li>
                   <button
-                    className={`w-full text-left py-2 px-4 rounded ${activeTab === 'cards' ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-100'}`}
+                    className={`w-full text-left py-2 px-4 rounded ${activeTab === 'cards' ? 'bg-yellow-100 text-yellow-700' : 'hover:bg-gray-100'}`}
                     onClick={() => setActiveTab('cards')}
                   >
                     <FaCreditCard className="inline-block mr-2" /> Cards
@@ -272,7 +270,7 @@ export default function Dashboard() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="bg-white border rounded-lg p-4 shadow-sm">
                       <h3 className="text-lg font-semibold mb-2">Debit Card</h3>
-                      <p className="text-gray-600 mb-4">**** **** **** 1234</p>
+                      <p className="text-gray-600 mb-4">**** **** **** 3982</p>
                       <div className="space-x-2">
                         <button
                           className="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition duration-200"
@@ -290,7 +288,7 @@ export default function Dashboard() {
                     </div>
                     <div className="bg-white border rounded-lg p-4 shadow-sm">
                       <h3 className="text-lg font-semibold mb-2">Credit Card</h3>
-                      <p className="text-gray-600 mb-4">**** **** **** 5678</p>
+                      <p className="text-gray-600 mb-4">**** **** **** 4559</p>
                       <div className="space-x-2">
                         <button
                           className="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition duration-200"

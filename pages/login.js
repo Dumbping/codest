@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { FaEnvelope, FaLock, FaSpinner } from 'react-icons/fa';
 import Image from 'next/image';
+import Head from 'next/head';
+import Link from "next/link";
+
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -39,9 +42,14 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-300 to-blue-800 flex items-center justify-center p-4">
+      <Head>
+        <title>TirprivateBank Login </title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-2xl">
         <div className="text-center">
-          <Image src="/logo.png" alt="SecureBank Logo" width={100} height={100} className="mx-auto" />
+         <Link href="/" > <Image src="/logo.png" alt="TirprivateBank Logo" width={100} height={100} className="mx-auto" /> </Link>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Welcome to TirprivateBank</h2>
           <p className="mt-2 text-sm text-gray-600">Please sign in to your account</p>
         </div>
