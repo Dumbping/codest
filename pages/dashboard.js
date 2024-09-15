@@ -164,13 +164,13 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-100">
       <Head>
-        <title>TirprivateBank Dashboard</title>
+        <title>TiBank Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header className="bg-blue-600 text-white">
         <div className="container mx-auto px-6 py-3 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-2xl font-bold mb-4 md:mb-0">TirprivateBank</div>
+          <div className="text-2xl font-bold mb-4 md:mb-0">TiBank</div>
           <nav className="flex items-center space-x-4 md:space-x-6">
             <button className="hover:text-blue-200">
               <FaHeadset className="inline-block mr-1" /> Support
