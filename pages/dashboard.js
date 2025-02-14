@@ -28,19 +28,19 @@ export default function Dashboard() {
   const accounts = [
     {
       name: "Checking Account",
-      balance: 90266.89,
+      balance: 266.89,
       number: "**** 29984",
       icon: FaMoneyBillAlt,
     },
     {
       name: "Savings Account",
-      balance: 8890346.67,
+      balance: 346.67,
       number: "**** 51278",
       icon: FaPiggyBank,
     },
     {
       name: "Investment Account",
-      balance: 9000578.0,
+      balance: 2345500.08,
       number: "**** 90912",
       icon: FaChartLine,
     },
@@ -75,7 +75,7 @@ export default function Dashboard() {
       name: "Ref : INVPROF-634532",
       code: "IA0678",
       date: "2020-08-22",
-      amount: 6434500.75,
+      amount: 1434500.75,
     },
     { name: "POS NBT Oil", code: "GS0299", date: "2020-08-21", amount: -30.75 },
     { name: "POS Qyeteti", code: "OS0902", date: "2019-08-20", amount: -50.99 },
@@ -186,7 +186,7 @@ export default function Dashboard() {
                 className="flex items-center hover:text-blue-200"
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
               >
-                <FaUser className="mr-2" /> Philip Cushing{" "}
+                <FaUser className="mr-2" /> Monica Cushing {" "}
                 <FaChevronDown className="ml-1" />
               </button>
               {showProfileDropdown && (
@@ -217,7 +217,7 @@ export default function Dashboard() {
       </header>
 
       <main className="container mx-auto px-6 py-8">
-        <h1 className="text-3xl font-bold mb-8">Welcome, Philip Cushing</h1>
+        <h1 className="text-3xl font-bold mb-8">Welcome, Monica Cushing</h1>
 
         <div className="flex flex-wrap -mx-4">
           <div className="w-full md:w-1/4 px-4 mb-8">
@@ -337,7 +337,8 @@ export default function Dashboard() {
                       <thead>
                         <tr className="bg-gray-100">
                           <th className="px-4 py-2 text-left">Name</th>
-                          <th className="px-4 py-2 text-left">Code</th>
+                          <th className="px-4 py-2 text-left">Transaction ID
+                          </th>
                           <th className="px-4 py-2 text-left">Date</th>
                           <th className="px-4 py-2 text-right">Amount</th>
                         </tr>
